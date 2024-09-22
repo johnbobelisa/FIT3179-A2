@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homework Week 9</title>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <h1>Homework Week 9</h1>
+  
+  <!-- This div is where the Vega-Lite map will be embedded -->
+  <div id="vis"></div>
+
+  <script type="text/javascript">
+    // The Vega-Lite specification
+    var vlSpec = {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "description": "Attainment of Year 12 or Equivalent in Australia (2014-2023)",
+      "title": {
+        "text": "Attainment of Year 12 or Equivalent in Australia (2014-2023)",
+        "subtitle": "Proportion (%) of people aged 15-74 attaining Year 12 or equivalent",
+        "fontSize": 16,
+        "subtitleFontSize": 12,
+        "anchor": "middle"
+      },
+      "width": 700,
+      "height": 500,
+      "params": [
+        {
+          "name": "yearParam",
+          "value": "2014",
+          "bind": {
+            "input": "select",
+            "options": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023"],
+            "name": "Select Year: "
+          }
+        }
+      ],
+      "projection": {
+        "type": "conicEqualArea",
+        "center": [134, -25],
+        "parallels": [0, 0],
+        "scale": 900
+      },
+      "layer": [
+        {
+          "data": {"sphere": true},
+          "mark": {"type": "geoshape", "fill": "#a0c4ff"}
+        },
+        {
+          "data": {"graticule": {"step": [10, 10]}},
+          "mark": {"type": "geoshape", "stroke": "lightgrey", "strokeWidth": 0.5}
+        },
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/johnbobelisa/FIT3179-A2/refs/heads/main/ne_50m_admin_1_states_provinces.json",
+            "format": {"type": "topojson", "feature": "ne_50m_admin_1_states_provinces"}
+          },
+          "transform": [
+            {
+              "filter": "datum.properties.admin == 'Australia' && datum.geometry && datum.geometry.coordinates && datum.geometry.coordinates.length > 0"
+            },
+            {
+              "lookup": "properties.name",
+              "from": {
+                "data": {
+                  "url": "https://raw.githubusercontent.com/johnbobelisa/FIT3179-A2/refs/heads/main/state_territory_proportions.csv",
+                  "format": {"type": "csv"}
+                },
+                "key": "State/Territory",
+                "fields": [
+                  "Proportion_2014", "Proportion_2015", "Proportion_2016",
+                  "Proportion_2017", "Proportion_2018", "Proportion_2019",
+                  "Proportion_2020", "Proportion_2021", "Proportion_2022",
+                  "Proportion_2023"
+                ]
+              }
+            },
+            {
+              "calculate": "datum['Proportion_' + yearParam]",
+              "as": "Proportion"
+            }
+          ],
+          "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 1},
+          "encoding": {
+            "color": {
+              "field": "Proportion",
+              "type": "quantitative",
+              "scale": {"scheme": "Blues"},
+              "legend": {"title": "Proportion (%)", "format": ".1f"}
+            },
+            "tooltip": [
+              {"field": "properties.name", "title": "State/Territory"},
+              {"field": "Proportion", "title": "Proportion (%)", "format": ".1f"}
+            ]
+          }
+        }
+      ]
+    };
+
+    // Embed the visualization in the div with id="vis"
+    vegaEmbed('#vis', vlSpec);
+  </script>
+</body>
+</html>
