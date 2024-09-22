@@ -1,26 +1,23 @@
 State/Territory,Year,Proportion
 Australian Capital Territory,2014,222.9
 New South Wales,2014,3148.1
-Northern Territory,2014,95.0
-Other Territories,2014,9834.2
+Northern Territory,2014,95
 Queensland,2014,1929.9
-South Australia,2014,632.0
+South Australia,2014,632
 Tasmania,2014,150.5
 Victoria,2014,2581.4
 Western Australia,2014,1073.2
 Australian Capital Territory,2015,215.1
-New South Wales,2015,3297.0
+New South Wales,2015,3297
 Northern Territory,2015,91.1
-Other Territories,2015,10327.8
 Queensland,2015,2039.6
 South Australia,2015,671.4
 Tasmania,2015,149.9
 Victoria,2015,2721.5
 Western Australia,2015,1142.8
 Australian Capital Territory,2016,223.5
-New South Wales,2016,3434.0
+New South Wales,2016,3434
 Northern Territory,2016,95.6
-Other Territories,2016,10541.5
 Queensland,2016,2048.3
 South Australia,2016,678.8
 Tasmania,2016,155.7
@@ -29,17 +26,15 @@ Western Australia,2016,1138.2
 Australian Capital Territory,2017,226.3
 New South Wales,2017,3517.2
 Northern Territory,2017,88.3
-Other Territories,2017,10905.1
 Queensland,2017,2139.1
 South Australia,2017,690.7
 Tasmania,2017,168.1
 Victoria,2017,2884.9
-Western Australia,2017,1188.0
+Western Australia,2017,1188
 Australian Capital Territory,2018,250.6
 New South Wales,2018,3639.5
 Northern Territory,2018,95.5
-Other Territories,2018,11387.800000000001
-Queensland,2018,2193.0
+Queensland,2018,2193
 South Australia,2018,729.8
 Tasmania,2018,172.4
 Victoria,2018,3112.9
@@ -47,16 +42,14 @@ Western Australia,2018,1196.1
 Australian Capital Territory,2019,248.1
 New South Wales,2019,3805.6
 Northern Territory,2019,93.4
-Other Territories,2019,11772.9
 Queensland,2019,2257.7
 South Australia,2019,746.5
 Tasmania,2019,191.5
-Victoria,2019,3278.0
+Victoria,2019,3278
 Western Australia,2019,1237.6
 Australian Capital Territory,2020,249.2
 New South Wales,2020,3890.7
 Northern Territory,2020,99.2
-Other Territories,2020,12157.199999999999
 Queensland,2020,2383.6
 South Australia,2020,762.7
 Tasmania,2020,198.5
@@ -65,7 +58,6 @@ Western Australia,2020,1216.5
 Australian Capital Territory,2021,245.2
 New South Wales,2021,3974.6
 Northern Territory,2021,93.4
-Other Territories,2021,12219.2
 Queensland,2021,2409.4
 South Australia,2021,775.6
 Tasmania,2021,201.4
@@ -74,16 +66,14 @@ Western Australia,2021,1276.2
 Australian Capital Territory,2022,256.8
 New South Wales,2022,4023.1
 Northern Territory,2022,99.6
-Other Territories,2022,12563.6
 Queensland,2022,2529.3
 South Australia,2022,775.6
 Tasmania,2022,206.6
-Victoria,2022,3396.0
+Victoria,2022,3396
 Western Australia,2022,1335.1
-Australian Capital Territory,2023,279.0
+Australian Capital Territory,2023,279
 New South Wales,2023,4060.3
 Northern Territory,2023,114.5
-Other Territories,2023,13006.1
 Queensland,2023,2596.3
 South Australia,2023,826.6
 Tasmania,2023,236.8
