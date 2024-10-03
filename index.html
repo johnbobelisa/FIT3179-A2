@@ -10,13 +10,16 @@
 </head>
 <body>
   <h1>Homework Week 9</h1>
+
+  <!-- Div for the first Vega-Lite visualization (Australia Year 12 attainment) -->
+  <div id="vis1"></div>
   
-  <!-- This div is where the Vega-Lite map will be embedded -->
-  <div id="vis"></div>
+  <!-- Div for the second Vega-Lite visualization (Student Performance with Gender Filter) -->
+  <div id="vis2"></div>
 
   <script type="text/javascript">
-    // The Vega-Lite specification
-    var vlSpec = {
+    // Vega-Lite specification for Attainment of Year 12 or Equivalent in Australia
+    var vlSpec1 = {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "description": "Attainment of Year 12 or Equivalent in Australia (2014-2023)",
       "title": {
@@ -101,8 +104,79 @@
       ]
     };
 
-    // Embed the visualization in the div with id="vis"
-    vegaEmbed('#vis', vlSpec);
+    // Vega-Lite specification for Student Performance with Gender Filter
+    var vlSpec2 = {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "params": [
+        {
+          "name": "genderFilter",
+          "value": "Male",
+          "bind": {
+            "input": "select",
+            "options": ["Male", "Female"],
+            "name": "Select Gender: "
+          }
+        }
+      ],
+      "data": {
+        "url": "https://raw.githubusercontent.com/johnbobelisa/FIT3179-A2/refs/heads/main/StudentPerformanceFactors.csv",
+        "format": {"type": "csv"}
+      },
+      "width": 600,
+      "height": 400,
+      "transform": [
+        {
+          "filter": "datum.Gender == genderFilter"
+        }
+      ],
+      "layer": [
+        {
+          "mark": "circle",
+          "encoding": {
+            "x": {
+              "field": "Hours_Studied",
+              "type": "quantitative",
+              "title": "Hours Studied"
+            },
+            "y": {
+              "field": "Exam_Score",
+              "type": "quantitative",
+              "title": "Exam Score"
+            },
+            "tooltip": [
+              {"field": "Hours_Studied", "type": "quantitative"},
+              {"field": "Exam_Score", "type": "quantitative"}
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 5,
+            "dy": -5,
+            "fontSize": 14,
+            "fontWeight": "bold"
+          },
+          "encoding": {
+            "x": {"value": 60},
+            "y": {"value": 20},
+            "text": {"value": "14-30 hours of studying per week achieved the best exam scores"}
+          }
+        }
+      ],
+      "config": {
+        "background": "#f9f9f9",
+        "axis": {
+          "labelFontSize": 12,
+          "titleFontSize": 14
+        }
+      }
+    };
+
+    // Embed both visualizations in their respective divs
+    vegaEmbed('#vis1', vlSpec1);
+    vegaEmbed('#vis2', vlSpec2);
   </script>
 </body>
 </html>
